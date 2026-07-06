@@ -15,6 +15,9 @@ import com.example.peminjamanbarangprototype.adapters.RequestAdapter;
 import com.example.peminjamanbarangprototype.databinding.FragmentUserItemsBinding;
 import com.example.peminjamanbarangprototype.models.LendingRequest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AdminRequestsFragment extends Fragment {
 
     private FragmentUserItemsBinding binding; // Reusing the same layout (just a RecyclerView)
@@ -31,7 +34,14 @@ public class AdminRequestsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        adapter = new RequestAdapter(DataRepository.getInstance().getRequests(), true, new RequestAdapter.OnRequestClickListener() {
+        List<LendingRequest> activeRequests = new ArrayList<>();
+        for (LendingRequest r : DataRepository.getInstance().getRequests()) {
+            if (r.getStatus() == LendingRequest.Status.PENDING || r.getStatus() == LendingRequest.Status.APPROVED) {
+                activeRequests.add(r);
+            }
+        }
+
+        adapter = new RequestAdapter(activeRequests, true, new RequestAdapter.OnRequestClickListener() {
             @Override
             public void onApprove(LendingRequest request) {
                 request.setStatus(LendingRequest.Status.APPROVED);

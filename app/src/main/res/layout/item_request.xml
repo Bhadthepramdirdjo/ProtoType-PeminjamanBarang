@@ -5,7 +5,10 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="12dp"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@color/white"
+    app:strokeColor="@color/yellow_secondary"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="User Name"
             android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:textColor="@color/blue_text" />
 
         <TextView
             android:id="@+id/tv_item_name"
@@ -40,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="[Bukti Gambar Terlampir]"
-            android:textColor="@color/gray_text"
+            android:textColor="@color/blue_text"
             android:textSize="12sp"
             android:visibility="gone"
             android:layout_marginTop="4dp" />

@@ -9,36 +9,30 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tambah/Edit Barang"
+        android:text="Ajukan Peminjaman"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/blue_primary"
         android:layout_marginBottom="16dp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_dialog_item_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Nama Barang"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_item_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:text="Nama Barang"
+        android:layout_marginBottom="12dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="Jumlah"
+        android:hint="Lama Peminjaman (misal: 3 hari)"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_item_quantity"
+            android:id="@+id/et_duration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>

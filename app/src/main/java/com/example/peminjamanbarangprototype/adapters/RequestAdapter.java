@@ -41,7 +41,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         LendingRequest request = requests.get(position);
         holder.binding.tvUserName.setText(request.getUserName());
-        holder.binding.tvItemName.setText("Barang: " + request.getItemName());
+        holder.binding.tvItemName.setText("Barang: " + request.getItemName() + " (" + request.getDuration() + ")");
         holder.binding.tvStatus.setText("Status: " + request.getStatus().name());
 
         if (request.getStatus() == LendingRequest.Status.RETURNED) {

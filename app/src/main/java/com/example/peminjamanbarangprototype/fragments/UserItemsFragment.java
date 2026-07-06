@@ -68,18 +68,37 @@ public class UserItemsFragment extends Fragment {
 
     private void requestItem(Item item) {
         if (item.getQuantity() > 0) {
-            LendingRequest request = new LendingRequest(
-                    String.valueOf(System.currentTimeMillis()),
-                    item.getId(),
-                    item.getName(),
-                    username,
-                    1
-            );
-            DataRepository.getInstance().addRequest(request);
-            item.setQuantity(item.getQuantity() - 1);
-            Toast.makeText(getContext(), "Request submitted for " + item.getName(), Toast.LENGTH_SHORT).show();
+            android.view.View dialogView = LayoutInflater.from(getContext()).inflate(com.example.peminjamanbarangprototype.R.layout.dialog_request_item, null);
+            android.widget.TextView tvName = dialogView.findViewById(com.example.peminjamanbarangprototype.R.id.tv_dialog_item_name);
+            com.google.android.material.textfield.TextInputEditText etDuration = dialogView.findViewById(com.example.peminjamanbarangprototype.R.id.et_duration);
+
+            tvName.setText("Barang: " + item.getName());
+
+            new com.google.android.material.dialog.MaterialAlertDialogBuilder(getContext())
+                    .setTitle("Konfirmasi Peminjaman")
+                    .setView(dialogView)
+                    .setPositiveButton("Ajukan", (dialog, which) -> {
+                        String duration = etDuration.getText().toString();
+                        if (!duration.isEmpty()) {
+                            LendingRequest request = new LendingRequest(
+                                    String.valueOf(System.currentTimeMillis()),
+                                    item.getId(),
+                                    item.getName(),
+                                    username,
+                                    1,
+                                    duration
+                            );
+                            DataRepository.getInstance().addRequest(request);
+                            item.setQuantity(item.getQuantity() - 1);
+                            Toast.makeText(getContext(), "Pengajuan terkirim untuk " + item.getName(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), "Lama peminjaman harus diisi", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("Batal", null)
+                    .show();
         } else {
-            Toast.makeText(getContext(), "Out of stock!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Stok habis!", Toast.LENGTH_SHORT).show();
         }
     }
 }

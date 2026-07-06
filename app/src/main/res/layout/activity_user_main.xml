@@ -24,9 +24,9 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:itemIconTint="@color/blue_primary"
-        app:itemTextColor="@color/blue_primary"
+        android:background="@color/blue_primary"
+        app:itemIconTint="@color/yellow_secondary"
+        app:itemTextColor="@color/yellow_secondary"
         app:menu="@menu/user_bottom_menu"
         app:layout_constraintBottom_toBottomOf="parent" />
 

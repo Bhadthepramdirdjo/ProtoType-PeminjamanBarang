@@ -26,14 +26,14 @@ public class LoginActivity extends AppCompatActivity {
                 // Login as Admin
                 startActivity(new Intent(this, AdminMainActivity.class));
                 finish();
-            } else if (!username.isEmpty() && !password.isEmpty()) {
+            } else if (username.equals("user123") && password.equals("user123")) {
                 // Login as User
                 Intent intent = new Intent(this, UserMainActivity.class);
                 intent.putExtra("USERNAME", username);
                 startActivity(intent);
                 finish();
             } else {
-                Toast.makeText(this, "Please enter username and password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Username atau Password salah!", Toast.LENGTH_SHORT).show();
             }
         });
     }

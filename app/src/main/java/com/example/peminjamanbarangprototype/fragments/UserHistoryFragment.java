@@ -70,16 +70,23 @@ public class UserHistoryFragment extends Fragment {
 
             @Override
             public void onReturn(LendingRequest request) {
-                request.setStatus(LendingRequest.Status.RETURNED);
-                // Return stock
-                for (Item item : DataRepository.getInstance().getItems()) {
-                    if (item.getId().equals(request.getItemId())) {
-                        item.setQuantity(item.getQuantity() + request.getQuantity());
-                        break;
-                    }
-                }
-                Toast.makeText(getContext(), "Barang dikembalikan dengan bukti gambar", Toast.LENGTH_SHORT).show();
-                adapter.notifyDataSetChanged();
+                new com.google.android.material.dialog.MaterialAlertDialogBuilder(getContext())
+                        .setTitle("Kembalikan Barang")
+                        .setMessage("Apakah Anda yakin ingin mengembalikan " + request.getItemName() + "?")
+                        .setPositiveButton("Ya, Kembalikan", (dialog, which) -> {
+                            request.setStatus(LendingRequest.Status.RETURNED);
+                            // Return stock
+                            for (Item item : DataRepository.getInstance().getItems()) {
+                                if (item.getId().equals(request.getItemId())) {
+                                    item.setQuantity(item.getQuantity() + request.getQuantity());
+                                    break;
+                                }
+                            }
+                            Toast.makeText(getContext(), "Barang berhasil dikembalikan", Toast.LENGTH_SHORT).show();
+                            adapter.notifyDataSetChanged();
+                        })
+                        .setNegativeButton("Batal", null)
+                        .show();
             }
         });
 
