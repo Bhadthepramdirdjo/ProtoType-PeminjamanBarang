@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Peminjaman Barang</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="admin_dashboard">Admin Dashboard</string>
+    <string name="items">Items</string>
+    <string name="requests">Requests</string>
+    <string name="returns">Returns</string>
+    <string name="browse">Browse</string>
+    <string name="my_requests">My Requests</string>
+    <string name="logout">Logout</string>
+    <string name="add_item">Tambah Barang</string>
+    <string name="edit_item">Edit Barang</string>
+    <string name="save">Simpan</string>
+    <string name="cancel">Batal</string>
+    <string name="item_name">Nama Barang</string>
+    <string name="quantity">Jumlah</string>
+</resources>
